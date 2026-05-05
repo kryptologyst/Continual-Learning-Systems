@@ -1,0 +1,31 @@
+model:
+  input_dim: 64
+  hidden_dims: [128, 64]
+  output_dim: 10
+  dropout: 0.1
+
+training:
+  learning_rate: 0.001
+  weight_decay: 1e-4
+  epochs_per_task: 10
+  batch_size: 32
+  seed: 42
+
+data:
+  dataset: "digits"  # "digits" or "synthetic"
+  num_tasks: 2
+  test_size: 0.2
+  samples_per_task: 1000
+  features: 64
+  classes_per_task: 5
+
+cl_method:
+  method: "ewc"  # "ewc", "l2", "mas", "replay", "none"
+  importance_factor: 1000.0
+  lambda_reg: 0.01
+  replay_capacity: 1000
+
+experiment_name: "continual_learning_baseline"
+save_results: true
+save_plots: true
+output_dir: "results"
